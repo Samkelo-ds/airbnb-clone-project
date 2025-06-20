@@ -122,3 +122,29 @@ The project supports both REST and GraphQL APIs for flexibility and efficiency. 
 
 ### 🚀 Performance Optimization
 Indexing and caching are used to make the backend faster and more responsive. These optimizations improve the user experience by speeding up data access.
+
+## 🔐 API Security
+
+Securing the backend APIs is essential to protect user data, financial transactions, and system integrity. Below are the key security measures implemented in the Airbnb Clone project:
+
+### 🔑 Authentication
+We use token-based authentication (e.g., JWT) to ensure only verified users can access protected endpoints. This helps prevent unauthorized access and impersonation.
+
+### 🛂 Authorization
+Role-based access control ensures users can only perform actions they’re allowed to (e.g., only hosts can manage property listings). This prevents users from accessing or modifying resources they don’t own.
+
+### 🚫 Rate Limiting
+Rate limiting is applied to prevent abuse, such as bots or brute-force attacks. It helps maintain system stability and protects sensitive endpoints like login and registration.
+
+### 🧊 Data Encryption
+All sensitive data (e.g., passwords, payment details) is encrypted both in transit (HTTPS) and at rest (in the database). This ensures user data is not exposed to attackers.
+
+### 💳 Payment Security
+Payments are processed through a secure and trusted third-party provider. Sensitive financial information is never stored directly in the system, protecting both users and hosts.
+
+---
+
+### 🛡️ Why Security Matters
+
+- **User Data Protection:** Personal info like names, emails, and passwords must be kept safe from leaks or hacks.
+- **Transaction Integrity:** Bookings and payments must be secure and tamper-proof to build trust.
