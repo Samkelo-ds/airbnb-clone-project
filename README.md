@@ -148,3 +148,20 @@ Payments are processed through a secure and trusted third-party provider. Sensit
 
 - **User Data Protection:** Personal info like names, emails, and passwords must be kept safe from leaks or hacks.
 - **Transaction Integrity:** Bookings and payments must be secure and tamper-proof to build trust.
+
+## 🔄 CI/CD Pipeline
+
+CI/CD stands for **Continuous Integration** and **Continuous Deployment**. It’s a process that helps developers automatically test, build, and deploy their code every time they make changes. This keeps the project stable, reduces human errors, and speeds up delivery.
+
+### 🚀 Why It’s Important
+- **Automatic Testing:** Ensures that new code doesn't break existing features.
+- **Faster Deployments:** Code changes can go live quickly and reliably.
+- **Consistency:** Reduces manual steps and errors during deployment.
+
+### 🧰 Tools Used
+- **GitHub Actions:** Automates the testing and deployment process directly from GitHub.
+- **Docker:** Packages the application in containers so it runs the same everywhere.
+- **Docker Hub (optional):** Stores container images for production or staging.
+- **Heroku / AWS / Render (optional):** Platforms for hosting and deploying the backend.
+
+With CI/CD in place, every update to the Airbnb Clone project becomes safer, faster, and easier to manage!
