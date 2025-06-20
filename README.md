@@ -97,3 +97,28 @@ Stores feedback left by users after a stay.
 - A **Booking** can have one **Payment**
 - A **Property** can have many **Reviews**
 - A **User** can write many **Reviews**
+
+  ## 🧩 Feature Breakdown
+
+Here are the main features of the Airbnb Clone backend and what each one does:
+
+### 👤 User Management
+Users can register, log in, and manage their profiles securely. This feature ensures that users have personalized access and control over their data.
+
+### 🏠 Property Management
+Hosts can list their properties, including details like location, pricing, and availability. This enables users to browse and book places to stay.
+
+### 📅 Booking System
+Guests can make bookings for available properties by selecting check-in and check-out dates. The system manages reservation details and prevents double bookings.
+
+### 💳 Payment Processing
+Payments can be made securely for each booking. This feature records transactions and helps ensure both guests and hosts are protected.
+
+### ⭐ Review System
+After a stay, guests can leave reviews and ratings for the properties. This builds trust in the community and helps users make informed decisions.
+
+### ⚡ API Access (REST & GraphQL)
+The project supports both REST and GraphQL APIs for flexibility and efficiency. This allows developers to interact with the backend in different ways depending on their needs.
+
+### 🚀 Performance Optimization
+Indexing and caching are used to make the backend faster and more responsive. These optimizations improve the user experience by speeding up data access.
