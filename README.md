@@ -43,3 +43,57 @@ Used to package the app into containers so it runs the same on every computer or
 
 ### 🚀 CI/CD Pipelines
 Automated tools that help test, build, and deploy the app faster and safer.
+## 🗄️ Database Design
+
+The project uses a relational database (PostgreSQL) to store all important information. Here are the key entities and their relationships:
+
+### 👤 Users
+Stores information about people using the platform.
+- `id`: Unique identifier for the user
+- `name`: Full name of the user
+- `email`: Email address (used for login)
+- `password`: Encrypted password
+- `role`: Indicates if the user is a guest or host
+
+### 🏡 Properties
+Holds details about places listed for rent.
+- `id`: Unique property ID
+- `owner_id`: References the user who owns the property
+- `title`: Name of the property
+- `location`: Address or area of the property
+- `price_per_night`: Rental cost per night
+
+### 📆 Bookings
+Stores reservations made by users.
+- `id`: Booking ID
+- `user_id`: The guest who made the booking
+- `property_id`: The property being booked
+- `check_in_date`: Start of the stay
+- `check_out_date`: End of the stay
+
+### 💳 Payments
+Stores payment details for bookings.
+- `id`: Payment ID
+- `booking_id`: The booking being paid for
+- `amount`: Total payment amount
+- `status`: Payment status (e.g., completed, pending)
+- `payment_date`: When the payment was made
+
+### ⭐ Reviews
+Stores feedback left by users after a stay.
+- `id`: Review ID
+- `user_id`: User who wrote the review
+- `property_id`: Property being reviewed
+- `rating`: Score out of 5
+- `comment`: Written feedback
+
+---
+
+### 🔗 Entity Relationships
+
+- A **User** can own multiple **Properties**
+- A **User** can make multiple **Bookings**
+- A **Booking** belongs to one **User** and one **Property**
+- A **Booking** can have one **Payment**
+- A **Property** can have many **Reviews**
+- A **User** can write many **Reviews**
