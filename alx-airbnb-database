@@ -1,1 +1,93 @@
-SELECT 'mysql' dbms,t.TABLE_SCHEMA,t.TABLE_NAME,c.COLUMN_NAME,c.ORDINAL_POSITION,c.DATA_TYPE,c.CHARACTER_MAXIMUM_LENGTH,n.CONSTRAINT_TYPE,k.REFERENCED_TABLE_SCHEMA,k.REFERENCED_TABLE_NAME,k.REFERENCED_COLUMN_NAME FROM INFORMATION_SCHEMA.TABLES t LEFT JOIN INFORMATION_SCHEMA.COLUMNS c ON t.TABLE_SCHEMA=c.TABLE_SCHEMA AND t.TABLE_NAME=c.TABLE_NAME LEFT JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE k ON c.TABLE_SCHEMA=k.TABLE_SCHEMA AND c.TABLE_NAME=k.TABLE_NAME AND c.COLUMN_NAME=k.COLUMN_NAME LEFT JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS n ON k.CONSTRAINT_SCHEMA=n.CONSTRAINT_SCHEMA AND k.CONSTRAINT_NAME=n.CONSTRAINT_NAME AND k.TABLE_SCHEMA=n.TABLE_SCHEMA AND k.TABLE_NAME=n.TABLE_NAME WHERE t.TABLE_TYPE='BASE TABLE' AND t.TABLE_SCHEMA NOT IN('INFORMATION_SCHEMA','mysql','performance_schema');
+CREATE TABLE `User` (
+  `user_id: Primary Key, UUID, Indexed` <type>,
+  `first_name: VARCHAR, NOT NULL` <type>,
+  `last_name: VARCHAR, NOT NULL` <type>,
+  `email: VARCHAR, UNIQUE, NOT NULL` <type>,
+  `Feld` <type>,
+  `password_hash: VARCHAR, NOT NULL` <type>
+);
+
+CREATE TABLE `Property` (
+  `property_id: Primary Key, UUID, Indexed` <type>,
+  `host_id: Foreign Key, references User(user_id)` <type>,
+  `name: VARCHAR, NOT NULL` <type>,
+  `description: TEXT, NOT NULL` <type>,
+  `location: VARCHAR, NOT NULL` <type>,
+  `pricepernight: DECIMAL, NOT NULL` <type>,
+  `created_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP` <type>,
+  `updated_at: TIMESTAMP, ON UPDATE CURRENT_TIMESTAMP` <type>
+);
+
+CREATE TABLE `Booking` (
+  `booking_id: Primary Key, UUID, Indexed` <type>,
+  `property_id: Foreign Key, references Property(property_id)` <type>,
+  `user_id: Foreign Key, references User(user_id)` <type>,
+  `start_date: DATE, NOT NULL` <type>,
+  `end_date: DATE, NOT NULL` <type>,
+  `total_price: DECIMAL, NOT NULL` <type>,
+  `status: ENUM (pending, confirmed, canceled), NOT NULL` <type>,
+  `created_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP` <type>
+);
+
+CREATE TABLE `Payment` (
+  `payment_id: Primary Key, UUID, Indexed` <type>,
+  `booking_id: Foreign Key, references Booking(booking_id)` <type>,
+  `amount: DECIMAL, NOT NULL` <type>,
+  `payment_date: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP` <type>,
+  `payment_method: ENUM (credit_card, paypal, stripe), NOT NULL` <type>
+);
+
+CREATE TABLE `Message` (
+  `message_id: Primary Key, UUID, Indexed` <type>,
+  `sender_id: Foreign Key, references User(user_id)` <type>,
+  `recipient_id: Foreign Key, references User(user_id)` <type>,
+  `message_body: TEXT, NOT NULL` <type>,
+  `sent_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP` <type>
+);
+
+CREATE TABLE `Review` (
+  `review_id: Primary Key, UUID, Indexed` <type>,
+  `property_id: Foreign Key, references Property(property_id)` <type>,
+  `user_id: Foreign Key, references User(user_id)` <type>,
+  `rating: INTEGER, CHECK: rating >= 1 AND rating <= 5, NOT NULL` <type>,
+  `comment: TEXT, NOT NULL` <type>,
+  `created_at: TIMESTAMP, DEFAULT CURRENT_TIMESTAMP` <type>
+);
+
+CREATE TABLE `User Table` (
+  `Unique constraint on email.` <type>,
+  `Non-null constraints on required fields.` <type>
+);
+
+CREATE TABLE `Property Table` (
+  `Foreign key constraint on host_id.` <type>,
+  `Non-null constraints on essential attributes.` <type>
+);
+
+CREATE TABLE `Booking Table` (
+  `Foreign key constraints on property_id and user_id.` <type>,
+  `status must be one of pending, confirmed, or canceled.` <type>
+);
+
+CREATE TABLE `Payment Table` (
+  `Foreign key constraint on booking_id, ensuring payment is linked to valid
+bookings.` <type>
+);
+
+CREATE TABLE `Review Table` (
+  `Foreign key constraints on property_id and user_id.` <type>,
+  `Constraints on rating values (1-5).` <type>,
+  `Feld` <type>
+);
+
+CREATE TABLE `Message Table` (
+  `Foreign key constraints on sender_id and recipient_id.` <type>
+);
+
+CREATE TABLE `Indexing` (
+  `Primary Keys: Indexed automatically.` <type>,
+  `○ email in the User table.
+○ property_id in the Property and Booking tables.
+○ booking_id in the Booking and Payment tables.` <type>,
+  `Additional Indexes:` <type>
+);
